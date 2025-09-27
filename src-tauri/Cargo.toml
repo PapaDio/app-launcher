@@ -2,7 +2,7 @@
 name = "app-launcher"
 version = "0.1.0"
 description = "A modern app launcher"
-authors = ["Your Name"]
+authors = ["Dio Nasai"]
 license = ""
 repository = ""
 default-run = "app-launcher"
@@ -34,3 +34,11 @@ windows = { version = "0.52", features = [
 
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 tauri-plugin-window-state = "2"
+
+[features]
+# by default Tauri runs in production mode
+# when `tauri dev` runs it is executed with `cargo run --no-default-features` if `devPath` is an URL
+default = [ "custom-protocol" ]
+# this feature is used used for production builds where `devPath` points to the filesystem
+# DO NOT remove this
+custom-protocol = [ "tauri/custom-protocol" ]
