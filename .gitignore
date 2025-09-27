@@ -50,6 +50,7 @@ Thumbs.db
 *.pyc
 __pycache__/
 /.github
+/.vscode
 
 # Custom apps and generated schemas (optional, remove if you want to keep these in git)
 src-tauri/custom_apps.json
