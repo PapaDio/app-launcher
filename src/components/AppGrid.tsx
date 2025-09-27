@@ -52,10 +52,18 @@ export const AppGrid: React.FC<AppGridProps> = ({ apps, onLaunch, viewMode, onEd
                         </DropdownMenu>
                       </div>
                       <CardContent className="p-4 flex flex-col items-center text-center" onClick={() => onLaunch(app)}>
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-2">
-                          <span className="text-white font-bold text-lg">
-                            {app.name.charAt(0)}
-                          </span>
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-2 overflow-hidden">
+                          {app.icon ? (
+                            <img
+                              src={app.icon.startsWith('data:') ? app.icon : `/${app.icon}`}
+                              alt={app.name}
+                              className="w-full h-full object-contain rounded-lg"
+                            />
+                          ) : (
+                            <span className="text-white font-bold text-lg">
+                              {app.name.charAt(0)}
+                            </span>
+                          )}
                         </div>
                         <h3 className="font-medium text-sm truncate w-full">
                           {app.name}
@@ -105,10 +113,18 @@ export const AppGrid: React.FC<AppGridProps> = ({ apps, onLaunch, viewMode, onEd
                   </DropdownMenu>
                 </div>
                 <CardContent className="p-3 flex items-center" onClick={() => onLaunch(app)}>
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
-                    <span className="text-white font-bold">
-                      {app.name.charAt(0)}
-                    </span>
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                    {app.icon ? (
+                      <img
+                        src={app.icon.startsWith('data:') ? app.icon : `/${app.icon}`}
+                        alt={app.name}
+                        className="w-full h-full object-contain rounded-lg"
+                      />
+                    ) : (
+                      <span className="text-white font-bold">
+                        {app.name.charAt(0)}
+                      </span>
+                    )}
                   </div>
                   <div className="flex-1 text-left">
                     <h3 className="font-medium">{app.name}</h3>
